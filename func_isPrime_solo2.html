@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>is prime 다시</h1>
+    <div id = "result"></div>
+
+    <script>
+        var numbers = {};
+        numbers.all = [];
+        numbers.prime = [];
+
+        numbers.isPrime = function(number){
+             for( var i = 2; i < number; i++){
+                if(number % i ===0){
+                    return false;
+                }
+             }
+             return true;
+        };
+
+        numbers.allNumbers = function(max_num){
+            for(var i =2; i<=max_num; i++){
+                this.all.push(i);
+            }
+        };
+
+        numbers.calcPrime = function(){
+            for(var i = 0; i<this.all.length; i++){
+                var n = this.all[i];
+                if(this.isPrime(n)){
+                    this.prime.push(n);
+                }
+            }
+        };
+
+        numbers.getAllPrimeNumber = function(){
+            var ret = ""; 
+            ret += "<h2>전체 소수의 갯수는 : " + this.prime.length+"</h2>\n";
+            for (var i =0; i< this.prime.length; i++){
+                ret += (i+1)+"번째 소수 : " + this.prime[i]+"<br>\n";
+            }
+            return ret;
+        };
+
+        numbers.allNumbers(10000);
+        numbers.calcPrime();
+        document.getElementById('result').innerHTML = numbers.getAllPrimeNumber();
+    </script>
+</body>
+</html>
