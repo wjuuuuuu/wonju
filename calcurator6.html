@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문자열 계산기 구현하기 무한루프, 함수</h1>
+    <div id = "output">알이즈웰</div>
+    <script>
+
+ var input = {count:2};
+ input.getFirstNum = function() {
+    var n = Number(prompt("첫번째 숫자를 입력해 주세요."));
+    return n;
+ };
+
+ input.getSecondNum = function() {
+    var n2 = Number(prompt(this.count + "번째 숫자를 입력해 주세요."));
+    this.count++;
+    return n2;
+ };
+
+ input.getOpeartor = function(){
+    while(true) {
+        var op = prompt("연산자를 입력해 주세요.");
+         if (op === "+" || op === "-" || op === "*" || op === "/" || op === "q") {
+        break;
+        } else {
+        alert("올바른 연산자를 입력해 주세요.");
+    }
+}
+    return op;
+ };
+
+ calcurator = {};
+ calcurator.calcurate = function(first, second, op) {
+    var ret;
+    switch(op) {
+        case "+":
+             ret = first + second;
+        break;
+        case "-":
+             ret = first - second;
+        break;
+        case "*":
+             ret = first * second;
+        break;
+        case "/":
+             ret = first / second;
+        break;
+
+    }
+    return ret;
+ };
+
+ output = {};
+ output.out = document.getElementById('output');
+
+ output.print = function(value) {
+    this.out.innerHTML =  "최종 결과 값은 " + value + "입니다.";
+ };
+
+ function main() {
+    var result = input.getFirstNum();
+    while(true) {
+        var op = input.getOpeartor();
+        if (op === "q"){
+            break;
+        };
+        var num2 = input.getSecondNum();
+        result = calcurator.calcurate(result, num2, op);
+    };
+   
+    output.print(result);
+
+ }
+
+ main();
+
+    
+    
+    </script>
+    
+</body>
+</html>

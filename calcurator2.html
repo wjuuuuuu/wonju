@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    첫번째 수 : <input type="text" id = 'n1'><br>
+    두번째 수 : <input type="text" id = 'n2'><br>
+    <button onclick= 'cal()'> 실행 </button>
+  </div>
+  <div id = 'output'> </div>
+    <script>
+        function cal() {
+            var str1 = document.getElementById('n1').value;
+            var str2 = document.getElementById('n2').value;
+            var a1 = Number(str1);
+            var a2 = Number(str2);
+
+            var out = document.getElementById('output');
+            var str = "";
+
+            str += "더하기 : "+(a1+a2)+"<br>"
+            str += "빼기 : "+(a1-a2)+"<br>"
+            str +=  "곱하기 : "+(a1*a2)+"<br>"
+            str += "나누기 : "+(a1/a2)+"<br>"
+            
+            out.innerHTML = str;
+        }
+
+    </script>
+</body>
+</html>

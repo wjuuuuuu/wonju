@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문자열 계산기 구현하기 무한루프</h1>
+    <div id = "output">알이즈웰</div>
+    <script>
+       function main() {
+        var n1 = Number(prompt("첫번째 숫자를 입력해주세요."));
+        
+        var out = document.getElementById("output");
+        var n2, op;
+        var n = 2;
+        
+        while(true) {
+          op = prompt("연산자를 입력해주세요.");
+          
+          if (op === "=") {
+            break;
+           
+          }
+
+          n2 = Number(prompt(n + "번째 숫자를 입력해주세요"));
+          if(op === "+") {
+            n1 += n2;
+          }else if (op === "-" ){
+            n1 -= n2;
+          }else if (op === "*" ){
+            n1 *= n2;
+          }else if (op === "/" ){
+            n1 /= n2;
+          }
+
+          n++;
+
+        }
+
+        out.innerHTML = "최종 결과 값은 "+n1+ " 입니다.";
+
+
+       }
+       main();
+    
+    </script>
+    
+</body>
+</html>

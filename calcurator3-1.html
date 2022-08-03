@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>계산기 구현하기</h1>
+    <div>
+        첫번째 수 : <input type="text" id = 'n1'><br>
+        두번째 수 : <input type="text" id = 'n2'><br>
+        연산 기호 : <input type="text" id = 'op'><br>
+        <button onclick="cal()">실행</button>
+    </div>
+    <div id = "output">결과는 여기에 나온답니다? </div>
+    <script>
+
+        function cal(){
+            var str1 = document.getElementById('n1').value;
+            var str2 = document.getElementById('n2').value;
+            var op = document.getElementById('op').value;
+            var n1 = Number(str1); 
+            var n2 = Number(str2); 
+            
+            var out = document.getElementById('output')
+            var str = "";
+
+            switch (op) {
+                case "+":
+                str += "더하기 : "+(n1+n2);
+                break;
+                case "-":
+                str += "빼기 : "+(n1-n2);
+                break;
+                case "*":
+                str += "곱하기 : "+(n1*n2);
+                break;
+                case "/":
+                str += "나누기 : "+(n1/n2);
+                break;
+                default:
+                str += "연산기호를 눌러주세요."
+            }
+
+        
+           out.innerHTML = str;
+        }
+    
+
+    </script>
+</body>
+</html>

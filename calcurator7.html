@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문자열 계산기 구현하기 한줄로</h1>
+    <div>
+        <input type="text" id = "input">
+        <button onclick="calc()">확인</button>
+    </div>
+    <div id = "output">결과가 여기에 표시됩니다.</div>
+<script>
+
+ var input = {};
+
+ input.init = function(str) {
+    this.list = str.split(" ");
+ };
+
+ input.empty = function() {
+    return this.list.length == 0;
+ };
+
+ input.getValue = function() {
+    var str = this.list.shift();
+    var n = Number(str);
+    return n;
+ };
+
+ input.getOpeartor = function(){
+    var op = this.list.shift();
+    if (op === "+" || op === "-" || op === "*" || op === "/") {
+        return op;
+        } else {
+       return "$";
+    }
+}
+
+ calcurator = {};
+ calcurator.calcurate = function(first, second, op) {
+    var ret;
+    switch(op) {
+        case "+":
+             ret = first + second;
+        break;
+        case "-":
+             ret = first - second;
+        break;
+        case "*":
+             ret = first * second;
+        break;
+        case "/":
+             ret = first / second;
+        break;
+        default:
+        return NaN;
+
+    }
+    return ret;
+ };
+
+ var output = {};
+ output.out = document.getElementById('output');
+
+ output.print = function(value) {
+    this.out.innerHTML =  "최종 결과 값은 " + value + "입니다.";
+ };
+
+
+ function calc() {
+    var str = document.getElementById("input").value;
+    input.init(str);
+    var result = input.getValue();
+    while(!input.empty()) {
+        var op = input.getOpeartor();
+        var second = input.getValue();
+        result = calcurator.calcurate(result, second, op);
+    }
+    output.print(result);
+ }
+    
+    </script>
+    
+</body>
+</html>

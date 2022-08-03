@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문자열 계산기 구현하기 무한루프, 함수</h1>
+    <div id = "output">알이즈웰</div>
+    <script>
+       function getFirstValue() {
+        var n = Number(prompt("첫번째 숫자를 입력해 주세요."));
+        return n;
+       }
+
+       var n = 2;
+       function getSecondValue() {
+        var num2 = Number(prompt(n + "번째 숫자를 입력해 주세요."));
+        n++;
+        return num2;
+       }
+
+       function getOperator() {
+        while(true) {
+            var op = prompt("연산자를 입력해 주세요.");
+            if(op ==="+" || op==="-" || op==="*" || op==="/" || op ==="q"){
+                break;
+            }
+    
+        }
+        return op;
+       }
+
+       function calculate(first, second, op) {
+        var ret;
+        switch(op){
+            case "+":
+                ret = first + second;
+            break;
+            case "-":
+                 ret = first - second;
+            break;
+            case "*":
+                 ret = first * second;
+            break;
+            case "/":
+                 ret = first / second;
+            break;
+           
+        }
+        return ret;
+       }
+
+       function print(result) {
+        return "최종 결과 값은 " + result + "입니다."
+       }
+
+       function main(){
+        var result = getFirstValue();
+        while(true) {
+           var op =  getOperator();
+           if (op === "q"){
+            break;
+           }
+           var num2 = getSecondValue();
+           result = calculate(result, num2, op);
+        }
+        var output = document.getElementById("output");
+        output.innerHTML = print(result);
+       }
+    main();
+        
+
+    
+    
+    </script>
+    
+</body>
+</html>
